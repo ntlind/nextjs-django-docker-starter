@@ -12,6 +12,21 @@ services:
     stdin_open: true
     tty: true
     command: python manage.py runserver 0.0.0.0:8000
+  react:
+    build: ./frontend
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend:/app
+      # One-way volume to use node_modules from inside image
+      - /app/node_modules
+    ports:
+      - "8201:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - django
+    command: npm start
   next:
     build: ./frontend2
     stdin_open: true
@@ -21,7 +36,7 @@ services:
       # One-way volume to use node_modules from inside image
       - /app/node_modules
     ports:
-      - "8202:3000"
+      - "8202:3001"
     depends_on:
       - django
-    command: yarn dev
+    command: yarn dev -p 3001

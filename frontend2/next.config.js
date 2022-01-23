@@ -9,6 +9,27 @@ const images = require("next-images");
 const offline = require("next-offline");
 const withPlugins = require("next-compose-plugins");
 const { parsed: localEnv } = require("dotenv").config();
+const redirects = {
+  async redirects() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://django:8000/:path*",
+        permanent: true,
+      },
+      {
+        source: "/apia/:path*",
+        destination: "http://localhost:8000/:path*",
+        permanent: true,
+      },
+      {
+        source: "/fuck/:path*",
+        destination: "http://localhost:8200/:path*",
+        permanent: true,
+      },
+    ];
+  },
+};
 
 const config = {
   webpack(config) {
@@ -22,4 +43,4 @@ const config = {
   },
 };
 
-module.exports = withPlugins([config, css, sass, images, offline]);
+module.exports = withPlugins([config, css, sass, images, offline, redirects]);
