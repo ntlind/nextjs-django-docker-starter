@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers
-from contrib import views
+from char_count import views
 from django.contrib import admin
 
 
@@ -11,9 +11,9 @@ router = routers.DefaultRouter()
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
-    path('char_count/', views.CharCount.as_view(), name='char_count'),
-    path(r'^char_count$', views.CharCount.as_view(), name='char_count'),
-    path('/', include('rest_framework.urls', namespace='rest_framework')),
-    path(r'admin/', admin.site.urls),
+    path("", include(router.urls)),
+    path("char_count/", views.CharCount.as_view(), name="char_count"),
+    path(r"^char_count$", views.CharCount.as_view(), name="char_count"),
+    path("/", include("rest_framework.urls", namespace="rest_framework")),
+    path(r"admin/", admin.site.urls),
 ]
