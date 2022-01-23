@@ -14,9 +14,9 @@ COPY ./backend/requirements /app/backend/requirements
 RUN pip install -r requirements/production.txt
 
 # Install JS dependencies
-WORKDIR /app/frontend
+WORKDIR /app/nextjs
 
-COPY ./frontend/package.json /app/frontend/
+COPY ./nextjs/package.json /app/nextjs/
 RUN $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
@@ -27,7 +27,7 @@ RUN $HOME/.yarn/bin/yarn build
 
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
-WORKDIR /app/frontend/build
+WORKDIR /app/nextjs/build
 
 RUN mkdir root && mv *.ico *.js *.json root
 

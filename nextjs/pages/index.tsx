@@ -1,35 +1,31 @@
-import Head from "next/head";
-
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
-
-require("dotenv").config();
+import SEO from "../components/SEO";
 
 export default function Home() {
   function handleSubmit(event) {
     event.preventDefault();
-    const text = document.querySelector("#char-input").value;
+    const text = (document.querySelector("#char-input") as HTMLInputElement).value;
     console.log(`input - ${text}`);
 
     axios
       .get(`/char_count/?text=${text}`)
       .then(({ data }) => {
-        document.querySelector(
+        (document.querySelector(
           "#char-count"
-        ).textContent = `${data.count} characters!`;
+        ) as HTMLInputElement).textContent = `${data.count} characters!`;
       })
       .catch((err) => console.log(err));
   }
 
   return (
-    <div className="container">
-      <Head>
-        <title>Next.js React App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <img src="/logo.svg" className="App-logo" alt="logo" />
+    <div>
+      <SEO
+        title="Front-end"
+        description="A starter template for building Next.js + Django RF + Docker web apps."
+      />
+      <main id="top" className='flex flex-col justify-center items-center h-screen w-screen bg-gray-800 text-white text-2xl space-y-12'>
+        <img src="/logo.svg" className="h-96" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -37,7 +33,7 @@ export default function Home() {
           <label htmlFor="char-input">How many characters does </label>
           <input id="char-input" type="text" placeholder="my string" />
           <span> </span>
-          <button onClick={handleSubmit}>have?</button>
+          <button className='button' onClick={handleSubmit}>have?</button>
           <div>
             <h3 id="char-count" data-testid="char-count">
               {" "}
@@ -45,8 +41,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      <footer></footer>
     </div>
   );
 }
