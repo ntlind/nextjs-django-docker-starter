@@ -13,11 +13,11 @@ services:
     tty: true
     command: python manage.py runserver 0.0.0.0:8000
   react:
-    build: ./frontend
+    build: ./react
     stdin_open: true
     tty: true
     volumes:
-      - ./frontend:/app
+      - ./react:/app
       # One-way volume to use node_modules from inside image
       - /app/node_modules
     ports:
@@ -28,11 +28,11 @@ services:
       - django
     command: npm start
   next:
-    build: ./frontend2
+    build: ./nextjs
     stdin_open: true
     tty: true
     volumes:
-      - ./frontend2:/app
+      - ./nextjs:/app
       # One-way volume to use node_modules from inside image
       - /app/node_modules
     ports:
