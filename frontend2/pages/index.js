@@ -5,16 +5,6 @@ import axios from "axios";
 
 require("dotenv").config();
 
-// const text = document.querySelector("#char-input").value;
-// axios
-//   .get(`/char_count?text=${text}`)
-//   .then(({ data }) => {
-//     document.querySelector(
-//       "#char-count"
-//     ).textContent = `${data.count} characters!`;
-//   })
-//   .catch((err) => console.log(err));
-
 export default function Home() {
   function handleSubmit(event) {
     event.preventDefault();
@@ -22,28 +12,15 @@ export default function Home() {
     console.log(`input - ${text}`);
 
     axios
-      // TODO solve this err_name_not_resolved issue which only occurs on next despite the curl working
-      // I think the issue may be that the request comes from the client, not the server, which doesn't know where django lives
-      .get(`/api/char_count/?text=${text}`)
+      .get(`/char_count/?text=${text}`)
       .then(({ data }) => {
-        window.alert(data);
         document.querySelector(
           "#char-count"
         ).textContent = `${data.count} characters!`;
       })
       .catch((err) => console.log(err));
-
-    // fetch(`api/char_count?text=${text}`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // }).then((response) => {
-    //   console.log(response);
-    // });
   }
 
-  useEffect(() => {});
   return (
     <div className="container">
       <Head>

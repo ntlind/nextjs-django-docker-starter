@@ -10,8 +10,6 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=backend.settings.development
     stdin_open: true
-    networks:
-      - stagingnetwork
     tty: true
     command: python manage.py runserver 0.0.0.0:8000
   react:
@@ -28,15 +26,11 @@ services:
       - NODE_ENV=development
     depends_on:
       - django
-    networks:
-      - stagingnetwork
     command: npm start
   next:
     build: ./frontend2
     stdin_open: true
     tty: true
-    networks:
-      - stagingnetwork
     volumes:
       - ./frontend2:/app
       # One-way volume to use node_modules from inside image
@@ -46,10 +40,3 @@ services:
     depends_on:
       - django
     command: yarn dev -p 3001
-networks:
-  stagingnetwork:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.28.0.0/16
-          gateway: 172.28.0.1
