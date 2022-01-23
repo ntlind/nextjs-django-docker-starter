@@ -32,13 +32,10 @@ export default function Home() {
         <div>
           <label htmlFor="char-input">How many characters does </label>
           <input id="char-input" type="text" placeholder="my string" />
-          <span> </span>
           <button className='button' onClick={handleSubmit}>have?</button>
-          <div>
-            <h3 id="char-count" data-testid="char-count">
-              {" "}
-            </h3>
-          </div>
+        </div>
+        <div className="text-4xl" id="char-count">
+          {" "}
         </div>
       </main>
     </div>
