@@ -1,5 +1,5 @@
 # pull official base image for builder
-FROM node:17.4
+FROM node:16.13.2
 
 # create and set build directory
 RUN mkdir /app
