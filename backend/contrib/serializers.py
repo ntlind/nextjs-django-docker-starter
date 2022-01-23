@@ -1,15 +1,8 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User, Group
+from contrib import models
 
 
-# Create your serializers here.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class CharCountSerializer(serializers.Serializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
-
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = models.CharCount
+        field = ['char_count']

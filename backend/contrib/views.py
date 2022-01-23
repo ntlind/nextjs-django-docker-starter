@@ -1,31 +1,24 @@
-# from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from contrib.models import CharCount
 
 
-# def char_count(request):
-#     text = request.GET.get("text", "")
-
-#     return JsonResponse({"count": len(text)*10})
-
-
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from rest_framework import permissions
-from contrib.serializers import UserSerializer, GroupSerializer
-
-
-class UserViewSet(viewsets.ModelViewSet):
+class CharCount(APIView):
     """
-    API endpoint that allows users to be viewed or edited.
+    Print the character count of the text submitted by the user
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
+    def handle_char_count(self, serializer):
+        try:
+            return Response({"count": len(serializer.data)})        
+        except Exception as e:
+            return Response({"count": None}, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request):
+        serializer = CharCount(data=request.query_params.get("text"))
+        return self.handle_char_count(serializer=serializer)
 
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    def post(self, request):
+        serializer = CharCount(data=request.data.get("text", ""))
+        return self.handle_char_count(serializer=serializer)
