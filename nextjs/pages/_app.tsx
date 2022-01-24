@@ -12,7 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
       </Head>
-      <link rel="icon" href="/favicon.ico" />
       <Component {...pageProps} />
       <footer></footer>
     </>

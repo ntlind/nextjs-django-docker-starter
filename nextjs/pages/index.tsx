@@ -24,7 +24,7 @@ export default function Home() {
         description="A starter template for building Next.js + Django RF + Docker web apps."
       />
       <main id="top" className='flex flex-col justify-center items-center h-screen w-screen bg-gray-800 text-white text-2xl space-y-12'>
-        <img src="/logo.svg" className="h-96" alt="logo" />
+        <img src="/images/logo.svg" className="h-96" alt="logo" />
         <p>
           Edit <code>pages/index.tsx</code> and save to reload.
         </p>

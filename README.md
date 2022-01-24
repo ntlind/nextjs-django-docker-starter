@@ -9,7 +9,7 @@ This repo. builds a simple web app using the following technologies:
 - Django REST
 - Docker (with `docker-compose`)
 
-![Screenshot of the basic app that this repo builds](https://github.com/ntlind/web-app-starter/screenshot.png)
+![Screenshot of the basic app that this repo builds](https://github.com/ntlind/web-app-starter/blob/main/screenshot.png?raw=true)
 
 ## Getting Started
 
