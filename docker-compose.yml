@@ -1,42 +1,58 @@
-version: "3.7"
+x-app:
+  &default-app
+  env_file:
+    - ".env"
+  restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+  stop_grace_period: "3s"
+  tty: true
+  stdin_open: true
 services:
   django:
+    <<: *default-app
     build: ./backend
     volumes:
       - ./backend:/app/backend
-      - ./docs:/app/docs
     ports:
-      - "8200:8000"
+      - "${DJANGO_PORT_FORWARD}:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=backend.settings.development
-    stdin_open: true
-    tty: true
     command: python manage.py runserver 0.0.0.0:8000
+    deploy:
+      resources:
+        limits:
+          cpus: "${BACKEND_CPUS:-0}"
+          memory: "${BACKEND_MEMORY:-0}"
   react:
+    <<: *default-app
     build: ./react
-    stdin_open: true
-    tty: true
     volumes:
       - ./react:/app
       # One-way volume to use node_modules from inside image
       - /app/node_modules
     ports:
-      - "8201:3000"
-    environment:
-      - NODE_ENV=development
+      - "${REACT_PORT_FORWARD}:3000"
     depends_on:
       - django
     command: npm start
+    deploy:
+      resources:
+        limits:
+          cpus: "${FRONTEND_CPUS:-0}"
+          memory: "${FRONTEND_MEMORY:-0}"
   next:
+    <<: *default-app
     build: ./nextjs
-    stdin_open: true
-    tty: true
     volumes:
       - ./nextjs:/app
       # One-way volume to use node_modules from inside image
       - /app/node_modules
     ports:
-      - "8202:3001"
+      - "${NEXT_PORT_FORWARD}:3001"
     depends_on:
       - django
     command: yarn dev -p 3001
+    deploy:
+      resources:
+        limits:
+          cpus: "${FRONTEND_CPUS:-0}"
+          memory: "${FRONTEND_MEMORY:-0}"

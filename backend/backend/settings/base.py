@@ -41,6 +41,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "backend.urls"
 
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(",")
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",

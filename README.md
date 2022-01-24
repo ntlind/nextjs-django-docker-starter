@@ -1,21 +1,32 @@
-nextjs-django-rest-docker-starter =======
+# web-app-starter
 
-[![Built with Cookiecutter React Django](https://img.shields.io/badge/built%20with-Cookiecutter%20React%20Django-blue)](https://img.shields.io/badge/built%20with-Cookiecutter%20React%20Django-blue)
+## Contents
 
-## Local setup
-On your terminal, simply do `docker-compose up --build`, and wait for the containers to build. Eventually, you'll be able to see the index page by going to `[http://127.0.0.1/](http://127.0.0.1/)`.
+This repo. builds a simple web app using the following technologies:
+- Two front-ends for you to choose from:
+  - Next.js with TypeScript and Tailwind
+  - React.js (a barebones implementation)
+- Django REST
+- Docker (with `docker-compose`)
 
-## Test coverage
-To run the tests, check your test coverage, and generate a coverage report:
+![Screenshot of the basic app that this repo builds](https://github.com/ntlind/web-app-starter/screenshot.png)
 
-```
-docker-compose run --rm django pytest
-```
+## Getting Started
 
-## Deployment
-You can check how to deploy your app to Heroku [here](https://github.com/ohduran/cookiecutter-react-django#deploy-to-heroku)
+1. Clone this repo: `git clone https://github.com/ntlind/web-app-starter && cd web-app-starter`
+2. Create and modify your `.env` file: `cp .env.example .env`
+3. Run docker: `docker-compose up --build`
+4. Handle migrations: `./run manage migrate`
+5. Navigate to pages (defaults shown below):
+   1. Django REST: `http://localhost:8000/char_count/`
+   2. Next.js: `http://localhost:3000/`
+   3. React: `http://localhost:3001/`
+6. Run backend tests (if desired): `./run manage test`
 
-## Resources
 
-- https://github.com/ohduran/cookiecutter-react-django
-- https://dev.to/englishcraig/creating-an-app-with-docker-compose-django-and-create-react-app-31lf
+## Learning Resources
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [Creating a React.js app with Docker (not REST framework)](https://dev.to/englishcraig/creating-an-app-with-docker-compose-django-and-create-react-app-31lf)
+- [Next.js with Tailwind](https://tailwindcss.com/docs/guides/nextjs)
+- [Next.js proxies (a.k.a., rewrites)](https://nextjs.org/docs/api-reference/next.config.js/rewrites)
