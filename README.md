@@ -1,4 +1,4 @@
-# web-app-starter
+# nextjs-django-docker-starter
 
 This repo. builds a simple web app using the following technologies:
 - Two front-ends for you to choose from:
@@ -7,11 +7,11 @@ This repo. builds a simple web app using the following technologies:
 - Django REST
 - Docker (with `docker-compose`)
 
-![Screenshot of the basic app that this repo builds](https://github.com/ntlind/web-app-starter/blob/main/screenshot.png?raw=true)
+![Screenshot of the basic app that this repo builds](https://github.com/ntlind/nextjs-django-docker-starter/blob/main/screenshot.png?raw=true)
 
 ## Getting Started
 
-1. Clone this repo: `git clone https://github.com/ntlind/web-app-starter && cd web-app-starter`
+1. Clone this repo: `git clone https://github.com/ntlind/nextjs-django-docker-starter && cd nextjs-django-docker-starter`
 2. Create and modify your `.env` file: `cp .env.example .env`
 3. Run docker: `docker-compose up --build`
 4. Handle migrations: `./run manage migrate`
