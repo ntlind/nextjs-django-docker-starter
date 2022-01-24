@@ -21,7 +21,8 @@ This repo. builds a simple web app using the following technologies:
    1. Django REST: `http://localhost:8000/char_count/`
    2. Next.js: `http://localhost:3000/`
    3. React: `http://localhost:3001/`
-6. Run backend tests (if desired): `./run manage test`
+6. Delete the frontend you don't want by removing it from `docker-compose.yaml` and cleaning your `.env` file.
+7. Run backend tests (if desired): `./run manage test`
 
 
 ## Learning Resources
