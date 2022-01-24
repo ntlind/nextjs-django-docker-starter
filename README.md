@@ -1,7 +1,5 @@
 # web-app-starter
 
-## Contents
-
 This repo. builds a simple web app using the following technologies:
 - Two front-ends for you to choose from:
   - Next.js with TypeScript and Tailwind
@@ -27,7 +25,7 @@ This repo. builds a simple web app using the following technologies:
 
 ## Learning Resources
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [Creating a React.js app with Docker (not REST framework)](https://dev.to/englishcraig/creating-an-app-with-docker-compose-django-and-create-react-app-31lf)
 - [Next.js with Tailwind](https://tailwindcss.com/docs/guides/nextjs)
 - [Next.js proxies (a.k.a., rewrites)](https://nextjs.org/docs/api-reference/next.config.js/rewrites)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Creating a React.js app with Docker (not REST framework)](https://dev.to/englishcraig/creating-an-app-with-docker-compose-django-and-create-react-app-31lf)
