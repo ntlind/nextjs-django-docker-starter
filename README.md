@@ -1,7 +1,5 @@
 # web-app-starter
 
-## Contents
-
 This repo. builds a simple web app using the following technologies:
 - Two front-ends for you to choose from:
   - Next.js with TypeScript and Tailwind
